@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  blynk:
+    build: .
+    ports:
+     - "7443:7443"
+     - "7444:7444"
+     - "8443:8443"
+     - "9443:9443"
+     - "8080:8080"
+     - "8442:8442"
+    volumes:
+     - "./data:/Blynk/data"
+     - "./logs:/Blynk/logs"

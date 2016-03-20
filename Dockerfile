@@ -1,17 +1,17 @@
-FROM ubuntu:latest
+FROM java:latest
 
-RUN \
-  apt-get update && \
-  apt-get install -y software-properties-common && \
-  rm -rf /var/lib/apt/lists/*
-
-RUN \
-  echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
-  echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections && \
-  apt-add-repository -y ppa:webupd8team/java && \
-  apt-get update && \
-  apt-get install -y oracle-java8-installer && \
-  rm -rf /var/lib/apt/lists/*
+#RUN \
+#  apt-get update && \
+#  apt-get install -y software-properties-common && \
+#  rm -rf /var/lib/apt/lists/*
+#
+#RUN \
+#  echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
+#  echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections && \
+#  apt-add-repository -y ppa:webupd8team/java && \
+#  apt-get update && \
+#  apt-get install -y oracle-java8-installer && \
+#  rm -rf /var/lib/apt/lists/*
 
 MAINTAINER geert.van.bastelaere@gmail.com
 
@@ -22,7 +22,7 @@ RUN \
 WORKDIR /Blynk
 
 ADD https://github.com/blynkkk/blynk-server/releases/download/v0.14.0/server-0.14.0.jar /Blynk/server-0.14.0.jar
-ADD server.properties /Blynk/server.propertiesd
+ADD server.properties /Blynk/server.properties
 
 VOLUME ["/Blynk/data","/Blynk/logs"]
 
