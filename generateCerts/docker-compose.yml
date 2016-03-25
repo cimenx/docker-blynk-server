@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+
+  certs:
+    build: .
+    volumes:
+     - "../server/certs:/Blynk/certs"
+

@@ -2,15 +2,8 @@ version: '2'
 
 services:
 
-  certs:
-    build: certs
-    volumes:
-     - "certs:/Blynk/certs"
-
   blynk:
     build: server
-    depends_on:
-     - certs
     ports:
      - "7443:7443"
      - "7444:7444"
@@ -19,12 +12,6 @@ services:
      - "8080:8080"
      - "8442:8442"
     volumes:
-     - "data:/Blynk/data"
-     - "certs:/Blynk/certs"
+     - "./data:/Blynk/data"
+     - "./certs:/Blynk/certs"
      - "./logs:/Blynk/logs"
-
-volumes:
-  certs:
-    driver: local
-  data:
-    driver: local

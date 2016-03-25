@@ -4,14 +4,15 @@ MAINTAINER geert.van.bastelaere@gmail.com
 
 RUN \
   mkdir -p /Blynk/data && \
-  mkdir -p /Blynk/logs && \
-  mkdir -p /Blynk/certs
+  mkdir -p /Blynk/logs
 
 WORKDIR /Blynk
 
+ADD certs /Blynk/certs
+
 ADD https://github.com/blynkkk/blynk-server/releases/download/v0.14.0/server-0.14.0.jar /Blynk/server.jar
 
-ADD server.properties /Blynk/server.properties
+ADD config /Blynk
 
 VOLUME ["/Blynk/certs","/Blynk/data","/Blynk/logs"]
 
